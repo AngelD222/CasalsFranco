@@ -55,13 +55,27 @@ def plot_average_rewards(steps: int, rewards: np.ndarray, algorithms: List[Algor
     plt.show()
 
 
+
+
 def plot_optimal_selections(steps: int, optimal_selections: np.ndarray, algorithms: List[Algorithm]):
     """
     Genera la gráfica de Porcentaje de Selección del Brazo Óptimo vs Pasos de Tiempo.
-
     :param steps: Número de pasos de tiempo.
     :param optimal_selections: Matriz de porcentaje de selecciones óptimas.
     :param algorithms: Lista de instancias de algoritmos comparados.
     """
+    sns.set_theme(style="whitegrid", palette="muted", font_scale=1.2)
+    plt.figure(figsize=(14, 7))
+    
+    for idx, algo in enumerate(algorithms):
+        label = get_algorithm_label(algo)
+        # Multiplicamos por 100 para mostrar porcentaje
+        plt.plot(range(steps), optimal_selections[idx] * 100, label=label, linewidth=2)
 
-    raise NotImplementedError("Esta función aún no ha sido implementada.")
+    plt.xlabel('Pasos de Tiempo', fontsize=14)
+    plt.ylabel('% Selección Óptima', fontsize=14)
+    plt.title('Porcentaje de Selección de la Acción Óptima', fontsize=16)
+    plt.legend(title='Algoritmos')
+    plt.ylim(-5, 105) # Fijar límites para ver bien el porcentaje
+    plt.tight_layout()
+    plt.show()
