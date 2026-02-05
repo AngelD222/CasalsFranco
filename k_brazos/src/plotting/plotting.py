@@ -119,6 +119,9 @@ def plot_regret(steps: int, regret_accumulated: np.ndarray, algorithms: List[Alg
 
 
 
+# Para que plot_arm_statistics funcione, necesitamos modificar en bandit_experiment.ipynb la función run_experiment y que devuelva una estructura de datos arm_stats.
+# El código del profesor solo guarda promedios temporales. Vamos a añadir acumuladores para contar cuántas veces se elige cada brazo en total 
+
 def plot_arm_statistics(arm_stats: List[dict], algorithms: List[Algorithm], *args):
     """
     Genera gráficas de estadísticas de cada brazo: Promedio de ganancias y número de selecciones.
