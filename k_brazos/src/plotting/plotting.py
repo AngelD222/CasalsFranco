@@ -9,7 +9,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from algorithms import Algorithm, EpsilonGreedy
+from algorithms import Algorithm, EpsilonGreedy, UCB1, Softmax
 
 
 def get_algorithm_label(algo: Algorithm) -> str:
