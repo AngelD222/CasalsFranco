@@ -31,27 +31,26 @@ class EpsilonGreedy(Algorithm):
         super().__init__(k)
         self.epsilon = epsilon
 
-   # def select_arm(self) -> int:
-    #    """
-     #   Selecciona un brazo basado en la política epsilon-greedy.
+    # def select_arm(self) -> int:
+    #     """
+    #     Selecciona un brazo basado en la política epsilon-greedy.
+    #
+    #     :return: índice del brazo seleccionado.
+    #     """
+    #
+    #     # Observa que para para epsilon=0 solo selecciona un brazo y no hace un primer recorrido por todos ellos.
+    #     # ¿Podrías modificar el código para que funcione correctamente para epsilon=0?
+    #
+    #     #if np.random.random() < self.epsilon:
+    #         # Selecciona un brazo al azar
+    #         # chosen_arm = np.random.choice(self.k)
+    #     #else:
+    #         # Selecciona el brazo con la recompensa promedio estimada más alta
+    #         # chosen_arm = np.argmax(self.values)
+    #
+    #     #return chosen_arm
 
-      #  :return: índice del brazo seleccionado.
-       # """
-
-        # Observa que para para epsilon=0 solo selecciona un brazo y no hace un primer recorrido por todos ellos.
-        # ¿Podrías modificar el código para que funcione correctamente para epsilon=0?
-
-        #if np.random.random() < self.epsilon:
-            # Selecciona un brazo al azar
-         #   chosen_arm = np.random.choice(self.k)
-        #else:
-            # Selecciona el brazo con la recompensa promedio estimada más alta
-         #   chosen_arm = np.argmax(self.values)
-
-        #return chosen_arm
-
-
-def select_arm(self) -> int:
+    def select_arm(self) -> int:
         """
         Selecciona un brazo basado en la política epsilon-greedy.
         Incluye un barrido inicial: si hay brazos sin probar, los selecciona primero.
@@ -81,4 +80,4 @@ def select_arm(self) -> int:
             # Si hay empate, elegimos uno al azar entre los mejores. Si no, coge el único.
             chosen_arm = np.random.choice(best_arms)
 
-        return chosen_arm
+        return chosen_arm chosen_arm
