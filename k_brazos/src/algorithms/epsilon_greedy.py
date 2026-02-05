@@ -80,4 +80,4 @@ class EpsilonGreedy(Algorithm):
             # Si hay empate, elegimos uno al azar entre los mejores. Si no, coge el único.
             chosen_arm = np.random.choice(best_arms)
 
-        return chosen_arm chosen_arm
+        return chosen_arm
