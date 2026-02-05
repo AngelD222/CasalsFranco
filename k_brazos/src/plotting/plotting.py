@@ -84,6 +84,41 @@ def plot_optimal_selections(steps: int, optimal_selections: np.ndarray, algorith
 
 
 # DOS FUNCIONES ADICIONALES
+
+def plot_regret(steps: int, regret_accumulated: np.ndarray, algorithms: List[Algorithm], *args):
+    """
+    Genera la gráfica de Regret Acumulado vs Pasos de Tiempo.
+    
+    :param steps: Número de pasos de tiempo.
+    :param regret_accumulated: Matriz de regret acumulado (algoritmos x pasos).
+    :param algorithms: Lista de instancias de algoritmos comparados.
+    :param args: Opcional. Parámetros extra (ej. cotas teóricas).
+    """
+    sns.set_theme(style="whitegrid", palette="muted", font_scale=1.2)
+    plt.figure(figsize=(14, 7))
+    
+    for idx, algo in enumerate(algorithms):
+        label = get_algorithm_label(algo)
+        # Asumimos que regret_accumulated ya viene acumulado desde el experimento
+        # Si viniera como regret instantáneo, haríamos np.cumsum(regret_accumulated[idx])
+        plt.plot(range(steps), regret_accumulated[idx], label=label, linewidth=2)
+
+    plt.xlabel('Pasos de Tiempo (t)', fontsize=14)
+    plt.ylabel('Regret Acumulado R(T)', fontsize=14)
+    plt.title('Evolución del Rechazo (Regret) Acumulado', fontsize=16)
+    plt.legend(title='Algoritmos')
+    
+    # RIGOR: Si se pasa una cota teórica en args, se pinta (útil para UCB más adelante)
+    if args:
+        # Ejemplo: args[0] podría ser una función lambda t: C * log(t)
+        pass 
+
+    plt.tight_layout()
+    plt.show()
+
+
+
+
 def plot_arm_statistics(arm_stats: List[dict], algorithms: List[Algorithm], *args):
     """
     Genera gráficas de estadísticas de cada brazo: Promedio de ganancias y número de selecciones.
@@ -146,33 +181,3 @@ def plot_arm_statistics(arm_stats: List[dict], algorithms: List[Algorithm], *arg
     plt.show()
 
 
-def plot_regret(steps: int, regret_accumulated: np.ndarray, algorithms: List[Algorithm], *args):
-    """
-    Genera la gráfica de Regret Acumulado vs Pasos de Tiempo.
-    
-    :param steps: Número de pasos de tiempo.
-    :param regret_accumulated: Matriz de regret acumulado (algoritmos x pasos).
-    :param algorithms: Lista de instancias de algoritmos comparados.
-    :param args: Opcional. Parámetros extra (ej. cotas teóricas).
-    """
-    sns.set_theme(style="whitegrid", palette="muted", font_scale=1.2)
-    plt.figure(figsize=(14, 7))
-    
-    for idx, algo in enumerate(algorithms):
-        label = get_algorithm_label(algo)
-        # Asumimos que regret_accumulated ya viene acumulado desde el experimento
-        # Si viniera como regret instantáneo, haríamos np.cumsum(regret_accumulated[idx])
-        plt.plot(range(steps), regret_accumulated[idx], label=label, linewidth=2)
-
-    plt.xlabel('Pasos de Tiempo (t)', fontsize=14)
-    plt.ylabel('Regret Acumulado R(T)', fontsize=14)
-    plt.title('Evolución del Rechazo (Regret) Acumulado', fontsize=16)
-    plt.legend(title='Algoritmos')
-    
-    # RIGOR: Si se pasa una cota teórica en args, se pinta (útil para UCB más adelante)
-    if args:
-        # Ejemplo: args[0] podría ser una función lambda t: C * log(t)
-        pass 
-
-    plt.tight_layout()
-    plt.show()
