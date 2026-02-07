@@ -9,10 +9,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from algorithms import Algorithm, EpsilonGreedy, UCB1, Softmax
-from k_brazos.src.algorithms.epsilon_decay import EpsilonDecay
-from k_brazos.src.algorithms.ucb2 import UCB2
-
+from algorithms import Algorithm, EpsilonGreedy, UCB1, Softmax, EpsilonDecay, UCB2
 
 def get_algorithm_label(algo: Algorithm) -> str:
     """
