@@ -1,6 +1,5 @@
 # Aquí vamos a definir cómo decide el agente. 
 # La política $\epsilon$-greedy elige la mejor acción conocida con probabilidad $1-\epsilon$, y una acción exploratoria al azar con probabilidad $\epsilon$. 
-# Además implementamos el decaimiento de Epsilon Decay para que el agente deje de explorar gradualmente conforme se vuelve un experto.
 
 import numpy as np
 import random
