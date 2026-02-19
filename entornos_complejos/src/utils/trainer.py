@@ -10,7 +10,7 @@ def train_agent(env, agent, n_episodes, initial_eps=1.0, final_eps=0.01, decay_r
     """
     for episode in tqdm(range(n_episodes), desc="Entrenando agente"):
         # 1. Actualizamos el valor de epsilon para este episodio
-        current_epsilon = epsilon_decay(episode, initial_eps, final_eps, decay_rate)
+        current_epsilon = get_epsilon_decay(episode, initial_eps, final_eps, decay_rate)
         # Inyectamos el epsilon actualizado al agente (ya que nuestra clase base lo usará)
         agent.epsilon = current_epsilon 
         
