@@ -2,7 +2,7 @@
 
 import numpy as np
 
-def get_epsilon_decay(episode, initial_eps=1.0, final_eps=0.01, decay_rate=0.005):
+def epsilon_decay(episode, initial_eps=1.0, final_eps=0.01, decay_rate=0.005):
     """
     Calcula el valor de epsilon con un decaimiento exponencial.
     Formula: eps = final_eps + (initial_eps - final_eps) * exp(-decay_rate * episode)
