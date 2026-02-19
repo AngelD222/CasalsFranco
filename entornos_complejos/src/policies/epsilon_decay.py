@@ -1,3 +1,5 @@
+# Además implementamos el decaimiento de Epsilon Decay para que el agente deje de explorar gradualmente conforme se vuelve un experto.
+
 import numpy as np
 
 def get_epsilon_decay(episode, initial_eps=1.0, final_eps=0.01, decay_rate=0.005):
