@@ -35,7 +35,7 @@ def plot_episode_rewards(stats: Dict[str, list], window_size: int = 50, title: s
 
 def plot_episode_lengths(stats: Dict[str, list], window_size: int = 50, title: str = "Longitud del Episodio (f(t))"):
     """
-    Dibuja la métrica f(t) = len(episodio_t) exigida en la guía de la práctica.
+    Ploteamos la nueva métrica f(t) = len(episodio_t)
     """
     lengths = stats["episode_lengths"]
     smoothed_lengths = moving_average(lengths, window_size)
