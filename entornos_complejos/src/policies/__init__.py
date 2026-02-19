@@ -1,6 +1,6 @@
 # Importación directa de las funciones
 from .epsilon_greedy import epsilon_greedy
-from .epsilon_decay import get_epsilon_decay
+from .epsilon_decay import epsilon_decay
 
 # Lista de funciones
 __all__ = [
