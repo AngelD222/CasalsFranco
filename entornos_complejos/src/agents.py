@@ -8,17 +8,16 @@ from typing import Any, Dict
 class Agent(ABC):
     """
     Clase base abstracta para todos los agentes de Reinforcement Learning.
-    Respeta el esquema propuesto en la guía de la práctica.
     """
     def __init__(self, env: gym.Env, hyperparameters: Dict[str, Any]):
-        """Inicializa todo lo necesario para el aprendizaje."""
+        """Inicializa todo lo necesario para el aprendizaje"""
         self.env = env
         self.hyperparameters = hyperparameters
         
-        # Diccionario para guardar métricas (crucial para los gráficos del informe)
+        # Diccionario para guardar métricas
         self.training_stats = {
             "episode_rewards": [],
-            "episode_lengths": [], # Esta es la métrica f(t) que pide el profesor
+            "episode_lengths": [], # métrica f(t) nueva
             "epsilon_history": []
         }
 
@@ -33,11 +32,11 @@ class Agent(ABC):
     @abstractmethod
     def update(self, obs, action, next_obs, reward, terminated, truncated, info):
         """
-        Con la muestra (s, a, s', r) e información complementaria aplicamos el algoritmo.
-        update() no es más que el algoritmo de aprendizaje del agente.
+        Con la muestra (s, a, s', r) e información complementaria aplicamos el algoritmo
+        update() no es más que el algoritmo de aprendizaje del agente
         """
         pass
         
     def stats(self) -> Dict[str, list]:
-        """Retorna los resultados estadísticos, evolución, etc."""
+        """Retorna los resultados estadísticos, evolución...."""
         return self.training_stats
