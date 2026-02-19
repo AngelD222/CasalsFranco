@@ -1,7 +1,7 @@
 import numpy as np
 from collections import defaultdict
-from src.agents.clase_BASE import Agent
-from src.policies.epsilon_greedy import epsilon_greedy
+from src.agents import Agent, AgentMonteCarloTodasVisitas
+from src.policies import epsilon_greedy, get_epsilon_decay
 
 class AgentMonteCarloTodasVisitas(Agent):
     """
