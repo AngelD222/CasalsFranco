@@ -5,5 +5,5 @@ from .epsilon_decay import get_epsilon_decay
 # Lista de funciones
 __all__ = [
     'epsilon_greedy',
-    'epsilon_decay'
+    'get_epsilon_decay'
 ]
