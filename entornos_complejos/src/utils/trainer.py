@@ -1,7 +1,7 @@
 # Vamos a guardar el dato de la función f(t) = len(episodio_t)
 
 from tqdm import tqdm
-from src.policies import epsilon_decay
+from src.policies import get_epsilon_decay
 
 def train_agent(env, agent, n_episodes, initial_eps=1.0, final_eps=0.01, decay_rate=0.005):
     """
