@@ -87,7 +87,7 @@ def plot_optimal_selections(steps: int, optimal_selections: np.ndarray, algorith
 
 
 
-# DOS FUNCIONES ADICIONALES
+# TRES FUNCIONES ADICIONALES
 
 def plot_regret(steps: int, regret_accumulated: np.ndarray, algorithms: List[Algorithm], *args):
     """
@@ -186,5 +186,22 @@ def plot_arm_statistics(arm_stats: List[dict], algorithms: List[Algorithm], *arg
                         ha='center', va='bottom', fontsize=10)
 
     plt.show()
+    
 
+def plot_mse(steps: int, mses: np.ndarray, algorithms: List[Algorithm]):
+    """
+    Genera la gráfica del Error Cuadrático Medio (MSE) en estimaciones de valor.
+    """
+    sns.set_theme(style="whitegrid", palette="muted", font_scale=1.2)
+    plt.figure(figsize=(14, 7))
+    
+    for idx, algo in enumerate(algorithms):
+        label = get_algorithm_label(algo)
+        plt.plot(range(steps), mses[idx], label=label, linewidth=2)
 
+    plt.xlabel('Pasos de Tiempo (t)', fontsize=14)
+    plt.ylabel('Error Cuadrático Medio (MSE)', fontsize=14)
+    plt.title('Evolución del MSE en las Estimaciones de Valor $Q_t(a)$', fontsize=16)
+    plt.legend(title='Algoritmos')
+    plt.tight_layout()
+    plt.show()
