@@ -21,13 +21,13 @@ class AgentMonteCarloOffPolicy(Agent):
 
     def get_action(self, state):
         """
-        Política de Comportamiento (b): epsilon-greedy (o incluso aleatoria pura)
+        Política de Comportamiento (b): epsilon-greedy
         Genera el comportamiento exploratorio.
         """
         if np.random.random() < self.epsilon:
             return np.random.randint(self.action_space_n)
         else:
-            # Si hay empate en Q, argmax devuelve el primero. Añadir desempate aleatorio es buena práctica.
+            # Si hay empate en Q, argmax devuelve el primero. Añadir desempate aleatorio.
             return np.argmax(self.q_table[state])
 
     def update(self, obs, action, next_obs, reward, terminated, truncated, info):
@@ -50,7 +50,7 @@ class AgentMonteCarloOffPolicy(Agent):
             error = G - self.q_table[obs][action]
             self.q_table[obs][action] += (W / self.C[obs][action]) * error
             
-            # ¿Cuál es la acción que tomaría nuestra política objetivo (pi)? (La voraz)
+            # ¿Cuál es la acción que tomaría nuestra política objetivo (pi)?
             best_action = np.argmax(self.q_table[obs])
             
             # Si la acción que tomamos (b) no coincide con la que tomaría (pi), 
