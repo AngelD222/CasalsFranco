@@ -52,3 +52,27 @@ def plot_episode_lengths(stats: Dict[str, list], window_size: int = 50, title: s
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.tight_layout()
     plt.show()
+
+def plot_win_rate(stats: Dict[str, list], window_size: int = 1000, title: str = "Tasa de Éxito (Win Rate)"):
+    """
+    Calcula y grafica la tasa de éxito (porcentaje de victorias).
+    En Blackjack, una recompensa de 1.0 significa victoria.
+    """
+    rewards = np.array(stats["episode_rewards"])
+    # Convertimos recompensas a booleanos (1 si ganó, 0 si perdió o empató)
+    wins = (rewards == 1.0).astype(int)
+    
+    win_rate = moving_average(wins, window_size) * 100 # En porcentaje
+    
+    plt.figure(figsize=(10, 5))
+    plt.plot(np.arange(window_size - 1, len(wins)), win_rate, 
+             color='green', linewidth=2, label=f'Win Rate (ventana={window_size})')
+    
+    plt.title(title)
+    plt.xlabel("Episodios")
+    plt.ylabel("Tasa de Victorias (%)")
+    plt.axhline(y=42.5, color='r', linestyle='--', alpha=0.5, label='Límite teórico del crupier')
+    plt.legend()
+    plt.grid(True, linestyle='--', alpha=0.6)
+    plt.tight_layout()
+    plt.show()
