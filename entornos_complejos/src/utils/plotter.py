@@ -71,7 +71,7 @@ def plot_win_rate(stats: Dict[str, list], window_size: int = 1000, title: str = 
     plt.title(title)
     plt.xlabel("Episodios")
     plt.ylabel("Tasa de Victorias (%)")
-    plt.axhline(y=42.5, color='r', linestyle='--', alpha=0.5, label='Límite teórico del crupier')
+    plt.axhline(y=42.5, color='r', linestyle='--', alpha=0.5, label='Máximo teórico del jugador (Política Óptima)')
     plt.legend()
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.tight_layout()
