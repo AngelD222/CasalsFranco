@@ -76,3 +76,56 @@ def plot_win_rate(stats: Dict[str, list], window_size: int = 1000, title: str = 
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.tight_layout()
     plt.show()
+
+
+def plot_multiple_seeds_rewards(data_dict: Dict[str, np.ndarray], window_size: int = 50, title: str = "Rendimiento promedio y varianza sobre varias ejecuciones"):
+    """
+    Grafica la recompensa media y la varianza sobre múltiples semillas.
+    Evalúa el rendimiento promedio sobre múltiples ejecuciones independientes y la varianza del retorno.
+    
+    Args:
+        data_dict: Diccionario donde la clave es el nombre del algoritmo (ej. 'SARSA') 
+                   y el valor es una matriz 2D de numpy (semillas x episodios).
+        window_size: Tamaño de la ventana para la media móvil.
+        title: Título de la gráfica.
+    """
+    plt.figure(figsize=(12, 6))
+    
+    # Paleta de colores para diferenciar algoritmos
+    colores = ['blue', 'red', 'green', 'purple'] 
+    
+    for idx, (algo_name, matrix_data) in enumerate(data_dict.items()):
+        color = colores[idx % len(colores)]
+        
+        # Dimensiones: número de semillas y número de episodios
+        n_seeds, n_episodes = matrix_data.shape
+        
+        # Aplicamos la media móvil a la ejecución de cada semilla individualmente
+        smoothed_data = []
+        for i in range(n_seeds):
+            smoothed_data.append(moving_average(matrix_data[i], window_size))
+        smoothed_data = np.array(smoothed_data)
+        
+        # Calculamos la media y la desviación estándar a lo largo del eje de las semillas (axis=0)
+        mean_rewards = np.mean(smoothed_data, axis=0)
+        std_rewards = np.std(smoothed_data, axis=0)
+        
+        # Ajustamos el eje X por la pérdida de episodios iniciales debido a la media móvil
+        x = np.arange(window_size - 1, n_episodes)
+        
+        # Graficamos la línea de la media central
+        plt.plot(x, mean_rewards, label=f'{algo_name} (Media)', color=color, linewidth=2)
+        
+        # Sombreamos el área de la varianza (Media ± 1 Desviación Estándar)
+        plt.fill_between(x, 
+                         mean_rewards - std_rewards, 
+                         mean_rewards + std_rewards, 
+                         color=color, alpha=0.2, label=f'{algo_name} (±1 StdDev)')
+        
+    plt.title(title)
+    plt.xlabel(f"Episodios (Media Móvil n={window_size})")
+    plt.ylabel("Recompensa Promedio")
+    plt.legend()
+    plt.grid(True, linestyle='--', alpha=0.6)
+    plt.tight_layout()
+    plt.show()
