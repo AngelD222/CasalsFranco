@@ -2,9 +2,9 @@
 from .clase_BASE import Agent
 from .monte_carlo import AgentMonteCarloTodasVisitas
 
-from monte_carlo_off import AgentMonteCarloOffPolicy
-from q_learning import AgentQLearning
-from sarsa import AgentSARSA
+from .monte_carlo_off import AgentMonteCarloOffPolicy
+from .q_learning import AgentQLearning
+from .sarsa import AgentSARSA
 from .sarsa_semi_grad import AgentSarsaSemiGradient
 
 # Lista de clases públicas accesibles al importar desde src.agents
