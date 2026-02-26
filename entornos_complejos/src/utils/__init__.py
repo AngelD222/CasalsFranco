@@ -8,7 +8,7 @@ __all__ = [
     'set_seed',
     'make_env',
     'plot_episode_rewards',
-    'plot_episode_lengths'
-    'plot_win_rate'
+    'plot_episode_lengths',
+    'plot_win_rate',
     'plot_multiple_seeds_rewards'
 ]
