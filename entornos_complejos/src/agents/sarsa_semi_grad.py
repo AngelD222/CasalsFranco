@@ -96,3 +96,9 @@ class AgentSarsaSemiGradient(Agent):
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
+        self.current_episode_losses.append(loss.item())
+        if terminated or truncated:
+            # Calculamos la media del episodio y la guardamos en las estadísticas globales
+            avg_loss = np.mean(self.current_episode_losses) if self.current_episode_losses else 0.0
+            self.training_stats["episode_losses"].append(avg_loss)
+            self.current_episode_losses = [] # Reseteamos para el próximo episodio
