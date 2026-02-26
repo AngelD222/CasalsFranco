@@ -129,3 +129,29 @@ def plot_multiple_seeds_rewards(data_dict: Dict[str, np.ndarray], window_size: i
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.tight_layout()
     plt.show()
+
+def plot_value_estimation_error(stats_dict: Dict[str, np.ndarray], window_size: int = 50, title: str = "Error Cuadrático Medio en Estimación de Valor (Loss)"):
+    """Grafica la evolución del TD Error."""
+    plt.figure(figsize=(12, 6))
+    colores = ['purple', 'orange', 'cyan', 'brown'] 
+    
+    for idx, (algo_name, matrix_data) in enumerate(stats_dict.items()):
+        color = colores[idx % len(colores)]
+        n_seeds, n_episodes = matrix_data.shape
+        
+        smoothed_data = np.array([moving_average(matrix_data[i], window_size) for i in range(n_seeds)])
+        mean_losses = np.mean(smoothed_data, axis=0)
+        std_losses = np.std(smoothed_data, axis=0)
+        x = np.arange(window_size - 1, n_episodes)
+        
+        plt.plot(x, mean_losses, label=f'{algo_name} (Media)', color=color, linewidth=2)
+        plt.fill_between(x, mean_losses - std_losses, mean_losses + std_losses, color=color, alpha=0.2)
+        
+    plt.title(title)
+    plt.xlabel(f"Episodios (Media Móvil n={window_size})")
+    plt.ylabel("Loss")
+    plt.yscale('log')
+    plt.legend()
+    plt.grid(True, linestyle='--', alpha=0.6)
+    plt.tight_layout()
+    plt.show()
