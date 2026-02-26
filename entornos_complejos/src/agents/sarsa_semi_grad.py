@@ -28,11 +28,6 @@ class AgentSarsaSemiGradient(Agent):
         self.optimizer = optim.Adam(self.q_network.parameters(), lr=self.lr)
         self.loss_fn = nn.MSELoss()
         
-        # Inyección dinámica para la métrica del Error
-        self.current_episode_losses = []
-        if "episode_losses" not in self.training_stats:
-            self.training_stats["episode_losses"] = []
-        
         # Caché para SARSA (necesitamos la siguiente acción A_{t+1})
         self.next_action = None
 
@@ -96,9 +91,3 @@ class AgentSarsaSemiGradient(Agent):
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
-        self.current_episode_losses.append(loss.item())
-        if terminated or truncated:
-            # Calculamos la media del episodio y la guardamos en las estadísticas globales
-            avg_loss = np.mean(self.current_episode_losses) if self.current_episode_losses else 0.0
-            self.training_stats["episode_losses"].append(avg_loss)
-            self.current_episode_losses = [] # Reseteamos para el próximo episodio
