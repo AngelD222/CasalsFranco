@@ -41,10 +41,6 @@ class AgentDQN(Agent):
         
         # 3. Memoria de Repetición
         self.memory = ReplayBuffer(capacity=buffer_capacity)
-
-        self.current_episode_losses = []
-        if "episode_losses" not in self.training_stats:
-            self.training_stats["episode_losses"] = []
         
         # Contador de pasos para sincronizar la red objetivo
         self.step_count = 0
@@ -60,18 +56,6 @@ class AgentDQN(Agent):
         """
         Almacena la transición en memoria y entrena con un mini-batch si hay suficientes datos.
         """
-        done = terminated or truncated
-        self.memory.push(obs, action, reward, next_obs, done)
-        self.step_count += 1
-        
-        # Si no hay suficientes datos, comprobamos si el episodio acabó de todas formas
-        if len(self.memory) < self.batch_size:
-            if done:
-                avg_loss = np.mean(self.current_episode_losses) if self.current_episode_losses else 0.0
-                self.training_stats["episode_losses"].append(avg_loss)
-                self.current_episode_losses = []
-            return
-            
         # 1. Guardar en memoria (Off-policy: aprendemos de experiencias pasadas)
         done = terminated or truncated
         self.memory.push(obs, action, reward, next_obs, done)
@@ -107,16 +91,11 @@ class AgentDQN(Agent):
         loss = self.loss_fn(current_q, target_q)
         self.optimizer.zero_grad()
         loss.backward()
+        
+        # Gradient Clipping: Evita que los gradientes exploten (buena práctica en DQN)
         torch.nn.utils.clip_grad_value_(self.policy_net.parameters(), 100)
         self.optimizer.step()
         
+        # 7. Sincronizar la Red Objetivo cada 'target_update_freq' pasos
         if self.step_count % self.target_update_freq == 0:
             self.target_net.load_state_dict(self.policy_net.state_dict())
-            
-        # --- NUEVA LÓGICA DE LOSS ENCAPSULADA ---
-        self.current_episode_losses.append(loss.item())
-        
-        if done:
-            avg_loss = np.mean(self.current_episode_losses) if self.current_episode_losses else 0.0
-            self.training_stats["episode_losses"].append(avg_loss)
-            self.current_episode_losses = []
