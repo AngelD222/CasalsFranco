@@ -132,25 +132,20 @@ def plot_multiple_seeds_rewards(data_dict: Dict[str, np.ndarray], window_size: i
     plt.show()
 
 
-def plot_multiple_seeds_metrics(data_dict: Dict[str, np.ndarray], 
-                                window_size: int = 50, 
-                                title: str = "Rendimiento promedio y varianza sobre varias ejecuciones",
-                                ylabel: str = "Recompensa Promedio"): 
+def plot_multiple_seeds_rewards2(data_dict: Dict[str, np.ndarray], window_size: int = 50, title: str = "Longitud episodio y varianza sobre varias ejecuciones"):
     """
-    Grafica una métrica media y su varianza sobre múltiples semillas.
-    Evalúa el rendimiento promedio sobre múltiples ejecuciones independientes y la varianza.
+    Grafica la longitud promedio y la varianza sobre múltiples semillas.
     
     Args:
         data_dict: Diccionario donde la clave es el nombre del algoritmo (ej. 'SARSA') 
                    y el valor es una matriz 2D de numpy (semillas x episodios).
         window_size: Tamaño de la ventana para la media móvil.
         title: Título de la gráfica.
-        ylabel: Etiqueta del eje Y (ej. "Recompensa Promedio", "Longitud del Episodio").
     """
     plt.figure(figsize=(12, 6))
     
     # Paleta de colores para diferenciar algoritmos
-    colores = ['blue', 'red', 'green', 'purple', 'orange'] 
+    colores = ['blue', 'red', 'green', 'purple'] 
     
     for idx, (algo_name, matrix_data) in enumerate(data_dict.items()):
         color = colores[idx % len(colores)]
@@ -161,33 +156,33 @@ def plot_multiple_seeds_metrics(data_dict: Dict[str, np.ndarray],
         # Aplicamos la media móvil a la ejecución de cada semilla individualmente
         smoothed_data = []
         for i in range(n_seeds):
-            # Asumo que tienes definida la función moving_average en otra parte de tu código
             smoothed_data.append(moving_average(matrix_data[i], window_size))
         smoothed_data = np.array(smoothed_data)
         
         # Calculamos la media y la desviación estándar a lo largo del eje de las semillas (axis=0)
-        mean_metrics = np.mean(smoothed_data, axis=0)
-        std_metrics = np.std(smoothed_data, axis=0)
+        mean_rewards = np.mean(smoothed_data, axis=0)
+        std_rewards = np.std(smoothed_data, axis=0)
         
         # Ajustamos el eje X por la pérdida de episodios iniciales debido a la media móvil
         x = np.arange(window_size - 1, n_episodes)
         
         # Graficamos la línea de la media central
-        plt.plot(x, mean_metrics, label=f'{algo_name} (Media)', color=color, linewidth=2)
+        plt.plot(x, mean_rewards, label=f'{algo_name} (Media)', color=color, linewidth=2)
         
         # Sombreamos el área de la varianza (Media ± 1 Desviación Estándar)
         plt.fill_between(x, 
-                         mean_metrics - std_metrics, 
-                         mean_metrics + std_metrics, 
+                         mean_rewards - std_rewards, 
+                         mean_rewards + std_rewards, 
                          color=color, alpha=0.2, label=f'{algo_name} (±1 StdDev)')
         
     plt.title(title)
     plt.xlabel(f"Episodios (Media Móvil n={window_size})")
-    plt.ylabel(ylabel) # <-- ¡USAMOS EL PARÁMETRO AQUÍ!
+    plt.ylabel("Longitud del episodio (paso)")
     plt.legend()
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.tight_layout()
     plt.show()
+
 
 def plot_value_estimation_error(stats_dict: Dict[str, np.ndarray], window_size: int = 50, title: str = "Error Cuadrático Medio en Estimación de Valor (Loss)"):
     """Grafica la evolución del TD Error."""
