@@ -6,6 +6,7 @@ from .monte_carlo_off import AgentMonteCarloOffPolicy
 from .q_learning import AgentQLearning
 from .sarsa import AgentSARSA
 from .sarsa_semi_grad import AgentSarsaSemiGradient
+from .sarsa_semi_grad2 import AgentSarsaSemiGradient2
 from .dqn import AgentDQN
 
 # Lista de clases públicas accesibles al importar desde src.agents
@@ -16,5 +17,6 @@ __all__ = [
     'AgentQLearning',
     'AgentSARSA',
     'AgentSarsaSemiGradient',
-    'AgentDQN'
+    'AgentDQN',
+    'AgentSarsaSemiGradient2'
 ]
