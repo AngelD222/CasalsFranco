@@ -38,7 +38,7 @@ Casals Franco/
                 epsilon_greedy.py  # Lógica de exploración/explotación
                 
             utils/                 # Herramientas transversales
-                __init__.py        #Facilita la importación de las funciones de la carpeta
+                __init__.py        # Facilita la importación de las funciones de la carpeta
                 plotter.py         # Generación de gráficas 
                 replay_buffer.py   # Modificación del buffer en el algoritmo DQN
                 seeder.py          # Fijación de semillas para reproducibilidad estricta
