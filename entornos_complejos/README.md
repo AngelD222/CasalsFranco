@@ -10,11 +10,14 @@
 
 ## Estructura
 
-El proyecto sigue una arquitectura modular orientada a objetos para separar claramente políticas, algoritmos de aprendizaje y utilidades.
-Nombre
+El proyecto sigue una arquitectura modular orientada a objetos para separar claramente políticas, algoritmos de aprendizaje y utilidades:
 
-    hola
-        dsds
+Casals Franco/
+
+    entornos_complejos/
+        src/
+        
+        
 NombreGrupo/
 │
 ├── EML_practica1_parte2.ipynb  # Cuaderno Jupyter principal con los experimentos
