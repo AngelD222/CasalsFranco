@@ -1,9 +1,9 @@
 # Título del Trabajo
 ## Información
-  - **Alumnos:** Apellido1, Nombre1; Apellido2, Nombre2; Apellido3, Nombre3
-  - **Asignatura:** Nombre de la asignatura
+  - **Alumnos:** Casals, Gloria; Franco, Ángel; 
+  - **Asignatura:** Extensiones de Machine Learning
   - **Curso:** 2025/2026
-  - **Grupo:** NombreGrupo (p.e. ap1ap2ap3m, usando los apellidos)
+  - **Grupo:** CasalsFranco
 
 ## Descripción
   [Breve descripción del trabajo y sus objetivos]
@@ -45,6 +45,6 @@ NombreGrupo/
 ## Tecnologías Utilizadas
 
   -Lenguaje: Python 3.10+
-  -Entornos de Simulación: Gymnasium (FrozenLake-v1 para métodos tabulares y Flappy-bird-gymnasium para métodos aproximados).
+  -Entornos de Simulación: Gymnasium (Blackjack-v1 y CliffWalking-v1 para métodos tabulares y MountainCar-v0 para métodos aproximados).
   -Matemáticas y Estructuras de Datos: NumPy (cálculo vectorial y tablas Q).
   -Deep Learning: PyTorch (para las Redes Neuronales Q-Net en la fase de métodos aproximados) .
