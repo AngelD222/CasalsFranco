@@ -56,6 +56,9 @@ Casals Franco/
 ## Tecnologías Utilizadas
 
   -Lenguaje: Python 3.10+
+  
   -Entornos de Simulación: Gymnasium (Blackjack-v1 y CliffWalking-v1 para métodos tabulares y MountainCar-v0 para métodos aproximados).
+  
   -Matemáticas y Estructuras de Datos: NumPy (cálculo vectorial y tablas Q).
+  
   -Deep Learning: PyTorch (para las Redes Neuronales Q-Net en la fase de métodos aproximados) .
