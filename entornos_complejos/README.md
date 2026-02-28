@@ -15,32 +15,37 @@ El proyecto sigue una arquitectura modular orientada a objetos para separar clar
 Casals Franco/
 
     entornos_complejos/
-        src/
+        README.md                  # Estructura del repositorio
+        src/                       # Framework de Reinforcement Learning
+        
+            agents/                # Clases de los agentes
+                __init__.py        # Plantilla abstracta (__init__, get_action, update)
+                clase_BASE.py      # Implementación del algoritmo MonteCarlo hacia atrás
+                dqn.py             # Implementación del algoritmo DQN
+                monte_carlo.py     # Implementación del algoritmo MonteCarlo on-policy
+                monte_carlo_off.py # Implementación del algoritmo MonteCarlo off-policy
+                q_learning.py      # Implementación del algoritmo tabular Q-Learning
+                sarsa.py           # Implementación del algoritmo tabular SARSA
+                sarsa_semi_grad.py # Implementación del algoritmo aproximado SARSA semi-gradiente
+                sarsa_semi_grad2.py # Implementación del algoritmo aproximado SARSA semi-gradiente con modificaciones en el agente
+                
+            networks/
+                q_network.py       # Implementa una red neuronal profunda en PyTorch para aproximar la función de valor $Q(s, a)$ en entornos de aprendizaje por refuerzo
+                
+            policies/              # Políticas de toma de decisiones
+                __init__.py        # Facilita la importación de las políticas que controlan el equilibrio entre exploración y explotación del agente
+                epsilon_decay.py   # Decaimiento del parámetro epsilon
+                epsilon_greedy.py  # Lógica de exploración/explotación
+                
+            utils/                 # Herramientas transversales
+                __init__.py        #Facilita la importación de las funciones de la carpeta
+                plotter.py         # Generación de gráficas 
+                replay_buffer.py   # Modificación del buffer en el algoritmo DQN
+                seeder.py          # Fijación de semillas para reproducibilidad estricta
+                trainer.py         # Bucle de entrenamiento principal
+            
         
         
-NombreGrupo/
-│
-├── EML_practica1_parte2.ipynb  # Cuaderno Jupyter principal con los experimentos
-├── README.md                   # Documentación principal del repositorio
-│
-└── src/                        # Framework de Reinforcement Learning
-    ├── __init__.py
-    │
-    ├── agents/                 # Clases de los agentes (El "Cerebro")
-    │   ├── __init__.py
-    │   ├── clase_BASE.py       # Plantilla abstracta (__init__, get_action, update)
-    │   └── monte_carlo.py      # Implementación del algoritmo MonteCarlo hacia atrás
-    │
-    ├── policies/               # Políticas de toma de decisiones
-    │   ├── __init__.py
-    │   ├── epsilon_greedy.py   # Lógica de exploración/explotación
-    │   └── epsilon_decay.py    # Decaimiento del parámetro epsilon
-    │
-    └── utils/                  # Herramientas transversales
-        ├── __init__.py
-        ├── seeder.py           # Fijación de semillas para reproducibilidad estricta
-        ├── trainer.py          # Bucle de entrenamiento principal
-        └── plotter.py          # Generación de gráficas (recompensas y métrica f(t))
         
 
 ## Instalación y Uso
