@@ -6,7 +6,9 @@
   - **Grupo:** CasalsFranco
 
 ## Descripción
-  [Breve descripción del trabajo y sus objetivos]
+ Compararemos dinámicas de convergencia, como el dilema exploración-explotación, la diferencia entre políticas On-Policy y Off-Policy, y la aversión al riesgo en entornos de la librería de Gymnasium. También estudiaremos la necesidad de aplicar los algoritmos adecuados dependiendo del tipo de entorno en el que trabajemos.
+
+ Validaremos la robustez del entrenamiento y las políticas óptimas con pruebas de estabilidad multi-semilla, analizando la longitud media del episodio, tasa de éxito, etc...
 
 ## Estructura
 
