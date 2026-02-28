@@ -1,4 +1,4 @@
-# Título del Trabajo
+# Práctica 1, Parte 2: Aprendizaje en entornos complejos
 ## Información
   - **Alumnos:** Casals, Gloria; Franco, Ángel; 
   - **Asignatura:** Extensiones de Machine Learning
