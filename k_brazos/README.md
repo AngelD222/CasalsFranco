@@ -1,6 +1,5 @@
 # Práctica 1, Parte 1: Bandidos
 
-# Título del Trabajo
 ## Información
   - **Alumnos:** Casals, Gloria; Franco, Ángel; 
   - **Asignatura:** Extensiones de Machine Learning
