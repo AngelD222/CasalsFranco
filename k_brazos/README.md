@@ -21,31 +21,34 @@ El repositorio sigue un patrón de diseño orientado a objetos, separando el ent
 Casals Franco/
 
     k_brazos/
-        README.md                  # Estructura del repositorio
-        src/                       # Framework de Reinforcement Learning
+        README.md                               # Estructura del repositorio
+        src/                                    # Framework de Reinforcement Learning
         
-            algorithms/            # Implementación de las estrategias de los agentes
-                __init__.py        # Facilita la importación
-                algorithm.py       # Clase abstracta base para los algoritmos
-                epsilon_decay.py   # variante Decay
-                epsilon_greedy.py  # Algoritmo Epsilon-Greedy
-                softmax.py         # Algoritmo Softmax
-                ucb.py             # Algoritmo UCB1
-                ucb2.py            # Algoritmo UCB2
+            algorithms/                         # Implementación de las estrategias de los agentes
+                __init__.py                     # Facilita la importación
+                algorithm.py                    # Clase abstracta base para los algoritmos
+                epsilon_decay.py                # variante Decay
+                epsilon_greedy.py               # Algoritmo Epsilon-Greedy
+                softmax.py                      # Algoritmo Softmax
+                ucb.py                          # Algoritmo UCB1
+                ucb2.py                         # Algoritmo UCB2
                 
-             arms/                 # Implementación de los entornos y distribuciones
-                __init__.py        # Facilita la importación
-                arm.py             # Clase abstracta base para los brazos
-                armbernoulli.py    # Brazo con distribución de Bernoulli
-                armbinomial.py     # Brazo con distribución Binomial B(n, p)
-                armnormal.py       # Brazo con distribución Normal N(μ, σ)
-                bandit.py          # Clase principal que agrupa k brazos (Entorno)
+             arms/                              # Implementación de los entornos y distribuciones
+                __init__.py                     # Facilita la importación
+                arm.py                          # Clase abstracta base para los brazos
+                armbernoulli.py                 # Brazo con distribución de Bernoulli
+                armbinomial.py                  # Brazo con distribución Binomial B(n, p)
+                armnormal.py                    # Brazo con distribución Normal N(μ, σ)
+                bandit.py                       # Clase principal que agrupa k brazos (Entorno)
                 
-            plotting/                 # Herramientas transversales
-                __init__.py        # Facilita la importación de las funciones para graficas
-                plotting.py        # Funciones para generar gráficas (MSE, Regret, etc...)
+            plotting/                           # Herramientas transversales
+                __init__.py                     # Facilita la importación de las funciones para graficas
+                plotting.py                     # Funciones para generar gráficas (MSE, Regret, etc...)
             
-        
+        main.ipynb                              # Fichero principal. Breve introducción del problema y enlace a los estudios.
+        notebook_1_distribucion_normal.ipynb    # Estudio 1: comportamiento de los algoritmos en brazos de distribución Normal
+        notebook_2_distribucion_binomial.ipynb  # Estudio 2: comportamiento de los algoritmos en brazos de distribución Binomial
+        notebook_3_distribucion_bernoulli.ipynb # Estudio 3: comportamiento de los algoritmos en brazos de distribución Bernoulli
         
         
 
@@ -55,8 +58,6 @@ Este proyecto está diseñado para ejecutarse principalmente en entornos de Jupy
 
 
 ## Tecnologías Utilizadas
-
-
 
 * **Lenguaje:** [Python 3.8+]
 * **Computación Numérica:** [NumPy]
