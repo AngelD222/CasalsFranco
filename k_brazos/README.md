@@ -56,6 +56,8 @@ Casals Franco/
 
 Este proyecto está diseñado para ejecutarse principalmente en entornos de Jupyter Notebook o Google Colab, aunque también puede utilizarse de forma local.
 
+* `main.ipynb`: Fichero principal que accede a los distintos *notebooks* (`main.ipynb`) de cada parte del proyecto, y estos *notebooks* a su vez contiene enlaces a todos los *notebooks* que se han utilizado para experimentar en cada parte.
+
 
 ## Tecnologías Utilizadas
 
