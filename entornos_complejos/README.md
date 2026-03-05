@@ -55,7 +55,10 @@ Casals Franco/
         
 
 ## Instalación y Uso
-  Abre el archivo EML_practica1_parte2.ipynb directamente en Colab utilizando el botón "Open in Colab".
+  Este proyecto está diseñado para ejecutarse principalmente en entornos de Jupyter Notebook o Google Colab, aunque también puede utilizarse de forma local.
+
+* `main.ipynb`: Fichero principal que accede a los distintos *notebooks* (`main.ipynb`) de cada parte del proyecto, y estos *notebooks* a su vez contiene enlaces a todos los *notebooks* que se han utilizado para experimentar en cada parte.
+
   El entorno está configurado con semillas estáticas (seeder.py) en PyTorch, NumPy y Gymnasium para asegurar que los resultados visualizados en la memoria gráfica coincidan exactamente con la ejecución del código . 
   Para ejecutar los experimentos, simplemente selecciona "Entorno de ejecución > Ejecutar todas" en Colab.
 
