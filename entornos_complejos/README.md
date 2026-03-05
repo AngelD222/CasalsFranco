@@ -49,7 +49,7 @@ Casals Franco/
         main.ipynb                              # Fichero principal. Breve introducción del problema y enlace a los estudios.
         notebook_1_monte_carlo.ipynb            # Estudio 1: Métodos tabulares: Monte Carlo On-Policy y Off-Policy
         notebook_2_diferencias_temporales.ipynb # Estudio 2: Métodos tabulares: Diferencias temporales (SARSA y Q-Learning)
-        notebook_3_metodos_aproximados.ipynb    # Estudio 3: Métodos aproximados: SARSA semi-gradiente y Deep Q-Learning
+        notebook_3_metodos_aproximados.ipynb    # Estudio 3: Métodos aproximados: SARSA semi-gradiente y DQN
         
         
         
